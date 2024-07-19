@@ -29,12 +29,14 @@ local function createOrUpdateESP(player)
     end
 end
 
+-- Function to update ESP for all players
 local function updateESP()
     for _, player in pairs(Players:GetPlayers()) do
         createOrUpdateESP(player)
     end
 end
 
+-- Function to toggle ESP on or off
 local function toggleESP()
     ESPEnabled = not ESPEnabled
     for _, box in pairs(ESPBoxes) do
@@ -44,7 +46,7 @@ end
 
 Players.PlayerAdded:Connect(function(player)
     player.CharacterAdded:Connect(function(character)
-        wait(1) -- Wait for character to fully load
+        wait(1) 
         createOrUpdateESP(player)
     end)
 end)
